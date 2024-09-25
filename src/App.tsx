@@ -44,7 +44,7 @@ function App() {
           />
         </main>
       </SearchProvider>
-      <footer className="py-4 text-center text-gray-500 dark:text-gray-400">
+      <footer className="py-4 text-center text-gray-500 dark:text-gray-400 mt-auto">
         <Footer />
       </footer>
     </div>
