@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { HeaderBar, FilterNav, Content, QuickNav } from "./layouts";
 import { useFetchReducer, SearchProvider } from "./state";
+import { Footer } from "./layouts/Footer";
 
 const allFilter = "All";
 
@@ -43,6 +44,9 @@ function App() {
           />
         </main>
       </SearchProvider>
+      <footer className="py-4 text-center text-gray-500 dark:text-gray-400">
+        <Footer />
+      </footer>
     </div>
   );
 }
