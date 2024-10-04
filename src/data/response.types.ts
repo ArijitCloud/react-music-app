@@ -13,7 +13,7 @@ export interface FeedResponse {
 }
 
 export interface RawAlbumEntry {
-  [key: string]: any; 
+  [key: string]: unknown; 
 }
 
 export interface AlbumEntry {

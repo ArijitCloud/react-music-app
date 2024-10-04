@@ -9,7 +9,6 @@ type FilterNavProps = {
 
 const FilterNav = ({ categories, loading }: FilterNavProps) => {
   const { selectedFilter, setSelectedFilter } = useSearchContext();
-  if (loading) return <SkeletonFilters />;
   const categoryButtons = useMemo(
     () =>
       categories &&
@@ -31,6 +30,7 @@ const FilterNav = ({ categories, loading }: FilterNavProps) => {
       )),
     [categories, selectedFilter]
   );
+  if (loading) return <SkeletonFilters />;
   return (
     <nav className="flex gap-4 my-2 overflow-x-hidden">
       <OverflowCarousel>{categoryButtons}</OverflowCarousel>
