@@ -12,7 +12,7 @@ const HeaderBar = () => {
         }`}
       >
         <a href="/">
-          <img src={logo} alt="Music Finnd Web" className="h-8" />
+          <img src={logo} alt="React Music App" className="h-8" />
         </a>
       </div>
       <SearchBox onSmallSBToggle={() => setShowLogo(!showLogo)} />
