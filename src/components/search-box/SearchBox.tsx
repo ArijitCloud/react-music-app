@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { Icon } from "../icon/Icon";
 import { useSearchContext } from "../../state";
 import debounce from "lodash.debounce";
@@ -11,17 +11,19 @@ const SearchBox = ({ onSmallSBToggle }: SearchBoxProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const { setQuery } = useSearchContext();
 
-  const debouncedSetQuery = useCallback(
+  const debouncedSetQuery = useRef(
     debounce((query: string) => {
       setQuery(query);
-    }, 500), // 500ms delay
-    []
-  );
+    }, 500) // 500ms delay
+  ).current;
 
-  const onSearchTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value);
-    debouncedSetQuery(e.target.value);
-  };
+  const onSearchTextChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchQuery(e.target.value);
+      debouncedSetQuery(e.target.value);
+    },
+    [debouncedSetQuery]
+  );
 
   return (
     <>

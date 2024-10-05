@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { OverflowCarousel, SkeletonFilters } from "../components";
 import { useSearchContext } from "../state";
 
@@ -9,6 +9,12 @@ type FilterNavProps = {
 
 const FilterNav = ({ categories, loading }: FilterNavProps) => {
   const { selectedFilter, setSelectedFilter } = useSearchContext();
+  const handleFilterClick = useCallback(
+    (category: string) => {
+      setSelectedFilter(selectedFilter === category ? "All" : category);
+    },
+    [selectedFilter, setSelectedFilter]
+  );
   const categoryButtons = useMemo(
     () =>
       categories &&
@@ -16,9 +22,7 @@ const FilterNav = ({ categories, loading }: FilterNavProps) => {
         <button
           key={`category${index}`}
           type="button"
-          onClick={() =>
-            setSelectedFilter(selectedFilter === category ? "All" : category)
-          }
+          onClick={() => handleFilterClick(category)}
           className={`px-3 py-1 rounded whitespace-nowrap cursor-pointer ${
             selectedFilter === category
               ? "bg-blue-500 text-white"
@@ -28,7 +32,7 @@ const FilterNav = ({ categories, loading }: FilterNavProps) => {
           {category}
         </button>
       )),
-    [categories, selectedFilter]
+    [categories, selectedFilter, handleFilterClick]
   );
   if (loading) return <SkeletonFilters />;
   return (

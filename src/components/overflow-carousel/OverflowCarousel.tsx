@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Icon } from "../icon/Icon";
 
 const TRANSLATE_AMOUNT = 200; // Amount to scroll when buttons are clicked
@@ -13,18 +13,18 @@ const OverflowCarousel = ({ children }: OverflowCarouselProps) => {
   const [isRightVisible, setIsRightVisible] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const updateVisibility = () => {
+  const updateVisibility = useCallback(() => {
     if (containerRef.current == null) return;
     const container = containerRef.current;
     setIsLeftVisible(translate > 0);
     setIsRightVisible(
       translate + container.clientWidth < container.scrollWidth
     );
-  };
+  }, [translate]);
 
   useEffect(() => {
     updateVisibility();
-  }, [translate, children]);
+  }, [translate, children, updateVisibility]);
 
   useEffect(() => {
     if (containerRef.current == null) return;
@@ -37,7 +37,7 @@ const OverflowCarousel = ({ children }: OverflowCarouselProps) => {
     return () => {
       observer.disconnect();
     };
-  }, [children]);
+  }, [children, updateVisibility]);
 
   const scrollLeft = () => {
     setTranslate((prev) => Math.max(prev - TRANSLATE_AMOUNT, 0));
