@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { HeaderBar, FilterNav, Content, QuickNav } from "./layouts";
-import { useFetchReducer, SearchProvider } from "./state";
+import { useFetchReducer, SearchContextProvider } from "./state";
 import { Footer } from "./layouts/Footer";
 
 const allFilter = "All";
@@ -28,7 +28,7 @@ function App() {
       style={{ scrollbarGutter: "stable" }}
       className="h-screen flex flex-col flex-grow overflow-auto px-2 sm:px-10 text-black dark:text-white"
     >
-      <SearchProvider>
+      <SearchContextProvider>
         <header className="sticky top-0 z-40 bg-white dark:bg-gray-bg py-4 px-6">
           <HeaderBar />
           <FilterNav categories={categories} loading={loading} />
@@ -43,7 +43,7 @@ function App() {
             showSaved={showSaved}
           />
         </main>
-      </SearchProvider>
+      </SearchContextProvider>
       <footer className="py-4 text-center text-gray-500 dark:text-gray-400 mt-auto">
         <Footer />
       </footer>

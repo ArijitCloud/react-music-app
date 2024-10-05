@@ -13,7 +13,9 @@ export interface FeedResponse {
 }
 
 export interface RawAlbumEntry {
-  [key: string]: unknown; 
+  // Raw data from the API. Subject to frequent changes.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any;
 }
 
 export interface AlbumEntry {

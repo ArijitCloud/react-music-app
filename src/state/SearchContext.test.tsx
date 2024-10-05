@@ -1,7 +1,8 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { SearchProvider, useSearchContext } from "./SearchContext";
+import { SearchContextProvider } from "./SearchContextProvider";
 import { useSearchReducer } from "./useSearchReducer";
+import { useSearchContext } from "./useSearchContext";
 
 /** Mocks */
 jest.mock("./useSearchReducer");
@@ -62,9 +63,9 @@ const TestComponent = () => {
 describe("SearchContext", () => {
   it("provides initial state correctly", () => {
     render(
-      <SearchProvider>
+      <SearchContextProvider>
         <TestComponent />
-      </SearchProvider>
+      </SearchContextProvider>
     );
 
     expect(screen.getByTestId("query")).toHaveTextContent("");
@@ -76,9 +77,9 @@ describe("SearchContext", () => {
 
   it("updates query when setQuery is called", () => {
     render(
-      <SearchProvider>
+      <SearchContextProvider>
         <TestComponent />
-      </SearchProvider>
+      </SearchContextProvider>
     );
 
     fireEvent.click(screen.getByText("Set Query"));
@@ -87,9 +88,9 @@ describe("SearchContext", () => {
 
   it("updates selectedFilter when setSelectedFilter is called", () => {
     render(
-      <SearchProvider>
+      <SearchContextProvider>
         <TestComponent />
-      </SearchProvider>
+      </SearchContextProvider>
     );
 
     fireEvent.click(screen.getByText("Set Filter"));
@@ -98,9 +99,9 @@ describe("SearchContext", () => {
 
   it("updates savedIds when setSavedIds is called", () => {
     render(
-      <SearchProvider>
+      <SearchContextProvider>
         <TestComponent />
-      </SearchProvider>
+      </SearchContextProvider>
     );
 
     fireEvent.click(screen.getByText("Set Saved IDs"));
@@ -109,9 +110,9 @@ describe("SearchContext", () => {
 
   it("updates sortOption when setSortOption is called", () => {
     render(
-      <SearchProvider>
+      <SearchContextProvider>
         <TestComponent />
-      </SearchProvider>
+      </SearchContextProvider>
     );
 
     fireEvent.click(screen.getByText("Set Sort Option"));
@@ -120,9 +121,9 @@ describe("SearchContext", () => {
 
   it("updates dataView when setDataView is called", () => {
     render(
-      <SearchProvider>
+      <SearchContextProvider>
         <TestComponent />
-      </SearchProvider>
+      </SearchContextProvider>
     );
 
     fireEvent.click(screen.getByText("Set Data View"));
