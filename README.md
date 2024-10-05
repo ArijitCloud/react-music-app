@@ -62,20 +62,6 @@ The app is built using the following technologies:
 - `src/state` - Manages global state using Context and custom hooks.
 - `__tests__/e2e` - Contains E2E tests to verify app functionality.
 
-## 🤝 Contribution Guidelines
-
-We welcome contributions! To contribute:
-
-1. 🍴 Fork the repository.
-2. Create a feature branch:
-   ```sh
-   git checkout -b feature/your-feature
-   ```
-3. 💾 Commit your changes and push the branch.
-4. Create a pull request for review.
-
-Please make sure to add/update relevant tests for any new features.
-
 ## 📜 License
 
 This project is licensed under the MIT License.

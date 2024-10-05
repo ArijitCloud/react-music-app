@@ -16,6 +16,7 @@ module.exports = {
     "*.config.ts",
     "*.config.js",
     "*.spec.ts",
+    "run-vite-e2e.cjs",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {

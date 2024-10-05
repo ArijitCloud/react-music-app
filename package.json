@@ -8,11 +8,11 @@
     "test": "jest",
     "test:watch": "jest --watchAll",
     "test:coverage": "jest --coverage",
-    "test:e2e": "playwright test",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 10",
     "preview": "vite preview",
-    "verify": "eslint && jest && playwright test && vite build && vite preview"
+    "test:e2e": "node scripts/run-vite-e2e.cjs",
+    "verify": "eslint && jest && vite build && node scripts/run-vite-e2e.cjs"
   },
   "dependencies": {
     "@heroicons/react": "^2.1.5",
@@ -34,6 +34,7 @@
     "@types/node": "^22.7.4",
     "@types/react": "^18.2.64",
     "@types/react-dom": "^18.2.21",
+    "@types/wait-on": "^5.3.4",
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",
     "@vitejs/plugin-react-swc": "^3.5.0",
@@ -45,6 +46,7 @@
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.12",
     "typescript": "^5.2.2",
-    "vite": "^5.1.6"
+    "vite": "^5.1.6",
+    "wait-on": "^8.0.1"
   }
 }
