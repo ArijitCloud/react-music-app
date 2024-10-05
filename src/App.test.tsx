@@ -1,11 +1,11 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { useFetchReducer } from "../state";
-import App from "../App";
+import { useFetchReducer } from "./state";
+import App from "./App";
 
 /** Mocks */
-jest.mock("../state", () => ({
-  ...jest.requireActual("../state"),
+jest.mock("./state", () => ({
+  ...jest.requireActual("./state"),
   useFetchReducer: jest.fn(),
   SearchProvider: ({ children }: { children: React.ReactNode }) => (
     <div>{children}</div>
@@ -13,7 +13,7 @@ jest.mock("../state", () => ({
 }));
 
 /** Mock Components */
-jest.mock("../layouts", () => ({
+jest.mock("./layouts", () => ({
   HeaderBar: () => <div data-testid="header-bar">HeaderBar</div>,
   FilterNav: ({ categories, loading }: any) => (
     <div data-testid="filter-nav">
